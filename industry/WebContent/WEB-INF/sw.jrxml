@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sw" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="200"/>
+	<property name="ireport.background.image" value="D:\workspace\new_workspace\industry\WebContent\WEB-INF\logo6.jpg"/>
+	<property name="ireport.background.image.properties" value="true,true,0.25,-8,-8,0,0,546,527"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1"/>
+	<subDataset name="dataset1"/>
+	<parameter name="temp_con_no" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT a.*,b.user_id,b.fname,b.lname,b.address1,b.address2,b.email,b.landline,b.pin FROM new_consumer a,user_master_consumer b WHERE a.temp_con_no=$P{temp_con_no} and TRIM(a.user_id)=TRIM(b.user_id)]]>
+	</queryString>
+	<field name="temp_con_no" class="java.lang.String"/>
+	<field name="conn_load" class="java.lang.Integer"/>
+	<field name="conn_phase" class="java.lang.Integer"/>
+	<field name="unit_name" class="java.lang.String"/>
+	<field name="unit_address1" class="java.lang.String"/>
+	<field name="unit_address2" class="java.lang.String"/>
+	<field name="unit_pincode" class="java.lang.String"/>
+	<field name="unit_landmark" class="java.lang.String"/>
+	<field name="unit_landline" class="java.lang.String"/>
+	<field name="unit_mobile" class="java.lang.String"/>
+	<field name="applicant_fname" class="java.lang.String"/>
+	<field name="applicant_lname" class="java.lang.String"/>
+	<field name="applicant_address1" class="java.lang.String"/>
+	<field name="applicant_address2" class="java.lang.String"/>
+	<field name="applicant_pincode" class="java.lang.String"/>
+	<field name="applicant_landline" class="java.lang.String"/>
+	<field name="applicant_mobile" class="java.lang.String"/>
+	<field name="name_ref1" class="java.lang.String"/>
+	<field name="address_ref1" class="java.lang.String"/>
+	<field name="name_ref2" class="java.lang.String"/>
+	<field name="address_ref2" class="java.lang.String"/>
+	<field name="entry_date" class="java.sql.Timestamp"/>
+	<field name="category" class="java.lang.String"/>
+	<field name="ip" class="java.lang.String"/>
+	<field name="user_id" class="java.lang.String"/>
+	<field name="fname" class="java.lang.String"/>
+	<field name="lname" class="java.lang.String"/>
+	<field name="address1" class="java.lang.String"/>
+	<field name="address2" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="landline" class="java.lang.String"/>
+	<field name="pin" class="java.lang.String"/>
+	<title>
+		<band height="74" splitType="Stretch">
+			<staticText>
+				<reportElement x="152" y="5" width="257" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[THE DURGAPUR PROJECTS LIMITED]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="27" width="222" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SINGLE WINDOW DEPARTMENT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="112" y="52" width="326" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ADMINISTRATIVE BUILDING, DURGAPUR-713201]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="709" splitType="Stretch">
+			<staticText>
+				<reportElement x="105" y="5" width="363" height="13"/>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[APLLICATION RECEIPT FOR INDUSTRIAL POWER CONNECTION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="51" width="149" height="19"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Temporary Connection No-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="75" width="151" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Load (KVA) Applied For]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="95" width="150" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Name of Unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="129" width="141" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="170" width="130" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Land Mark]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="190" width="130" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Phone Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="210" width="130" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Mobile]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="363" width="138" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Contact Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="259" width="149" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Name of the Applicant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="305" width="139" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="384" width="139" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Mobile]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="468" width="199" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Name & Address of the 1st Referee]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="619" width="496" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[This application receipt and the other required documents have to be submitted to Commercial Power Department, DPL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="639" width="495" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Department, DPL.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="40" y="49" width="150" height="1"/>
+			</line>
+			<line>
+				<reportElement x="191" y="49" width="1" height="21"/>
+			</line>
+			<line>
+				<reportElement x="41" y="70" width="150" height="1"/>
+			</line>
+			<line>
+				<reportElement x="41" y="49" width="1" height="21"/>
+			</line>
+			<line>
+				<reportElement x="191" y="49" width="265" height="1"/>
+			</line>
+			<line>
+				<reportElement x="191" y="70" width="265" height="1"/>
+			</line>
+			<line>
+				<reportElement x="44" y="70" width="150" height="1"/>
+			</line>
+			<line>
+				<reportElement x="42" y="91" width="150" height="1"/>
+			</line>
+			<line>
+				<reportElement x="191" y="70" width="1" height="21"/>
+			</line>
+			<line>
+				<reportElement x="41" y="70" width="1" height="21"/>
+			</line>
+			<line>
+				<reportElement x="191" y="91" width="265" height="1"/>
+			</line>
+			<line>
+				<reportElement x="191" y="92" width="1" height="21"/>
+			</line>
+			<line>
+				<reportElement x="41" y="91" width="1" height="23"/>
+			</line>
+			<line>
+				<reportElement x="191" y="113" width="265" height="2"/>
+			</line>
+			<line>
+				<reportElement x="42" y="113" width="150" height="1"/>
+			</line>
+			<line>
+				<reportElement x="41" y="168" width="150" height="1"/>
+			</line>
+			<line>
+				<reportElement x="191" y="113" width="1" height="55"/>
+			</line>
+			<line>
+				<reportElement x="456" y="49" width="1" height="179"/>
+			</line>
+			<line>
+				<reportElement x="192" y="168" width="264" height="1"/>
+			</line>
+			<line>
+				<reportElement x="41" y="112" width="1" height="57"/>
+			</line>
+			<line>
+				<reportElement x="41" y="168" width="1" height="61"/>
+			</line>
+			<line>
+				<reportElement x="42" y="228" width="150" height="1"/>
+			</line>
+			<line>
+				<reportElement x="191" y="169" width="1" height="59"/>
+			</line>
+			<line>
+				<reportElement x="192" y="228" width="264" height="1"/>
+			</line>
+			<line>
+				<reportElement x="192" y="189" width="264" height="1"/>
+			</line>
+			<line>
+				<reportElement x="191" y="210" width="264" height="1"/>
+			</line>
+			<line>
+				<reportElement x="41" y="188" width="150" height="1"/>
+			</line>
+			<line>
+				<reportElement x="42" y="209" width="150" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="42" y="34" width="190" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[DETAILS OF INDUSTRY UNIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="238" width="190" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[DETAILS OF APPLICANT]]></text>
+			</staticText>
+			<line>
+				<reportElement x="40" y="253" width="415" height="1"/>
+			</line>
+			<line>
+				<reportElement x="40" y="279" width="414" height="1"/>
+			</line>
+			<line>
+				<reportElement x="455" y="253" width="2" height="150"/>
+			</line>
+			<line>
+				<reportElement x="40" y="253" width="1" height="150"/>
+			</line>
+			<line>
+				<reportElement x="192" y="253" width="1" height="150"/>
+			</line>
+			<line>
+				<reportElement x="42" y="360" width="414" height="1"/>
+			</line>
+			<line>
+				<reportElement x="40" y="383" width="417" height="1"/>
+			</line>
+			<line>
+				<reportElement x="41" y="404" width="417" height="1"/>
+			</line>
+			<line>
+				<reportElement x="41" y="433" width="419" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="41" y="417" width="190" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[DETAILS OF REFEREES]]></text>
+			</staticText>
+			<line>
+				<reportElement x="41" y="520" width="418" height="1"/>
+			</line>
+			<line>
+				<reportElement x="40" y="433" width="1" height="178"/>
+			</line>
+			<line>
+				<reportElement x="246" y="433" width="1" height="178"/>
+			</line>
+			<line>
+				<reportElement x="459" y="433" width="1" height="178"/>
+			</line>
+			<staticText>
+				<reportElement x="43" y="556" width="199" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Name & Address of the 1st Referee]]></text>
+			</staticText>
+			<line>
+				<reportElement x="41" y="611" width="418" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="196" y="70" width="256" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{conn_load}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="51" width="256" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp_con_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="92" width="256" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unit_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="194" y="115" width="260" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unit_address1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="170" width="242" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unit_landmark}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="191" width="242" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unit_landline}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="208" width="242" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unit_mobile}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="247" y="434" width="208" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name_ref1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="247" y="454" width="207" height="66"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{address_ref1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="247" y="523" width="210" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name_ref2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="247" y="543" width="205" height="68"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{address_ref2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="194" y="133" width="100" height="17"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{unit_address1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="151" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{unit_address2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="260" width="141" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="352" y="259" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{lname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="320" width="113" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="343" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="195" y="364" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{landline}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="385" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{user_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="194" y="280" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{address1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="194" y="300" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{address2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="19" splitType="Stretch"/>
+	</summary>
+</jasperReport>
