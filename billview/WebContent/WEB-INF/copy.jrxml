@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="electricbill" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="348"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\KOUSIK\\Desktop\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="consumer_no" class="java.lang.String"/>
+	<parameter name="bill_prd" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select a.*,if(a.mri_load=0,'',a.mri_load)as mri_load1, SUBSTRING(bill_prd,1,5) as bmonth1,SUBSTRING(a.bill_prd,9,5) as bmonth2,(a.CURR_READ-a.LAST_READ) as consum_unit,IFNULL(b.name,'') as name,IFNULL(b.address1,'') as address1,IFNULL(b.address2,'') as address2,IFNULL(b.address3,'') as address3,IFNULL(b.address4,'') as address4,IFNULL(b.mob_no,'') as mobile,IFNULL(b.email_id,'') as email from x_bill a,m_party b where
+a.party_code=b.party_code and a.party_code=$P{consumer_no} and a.bill_prd=$P{bill_prd}]]>
+	</queryString>
+	<field name="BILL_DATE" class="java.sql.Date"/>
+	<field name="PARTY_CODE" class="java.lang.String"/>
+	<field name="REFERENCE" class="java.lang.String"/>
+	<field name="METER_NO" class="java.lang.String"/>
+	<field name="CON_PRD" class="java.lang.String"/>
+	<field name="BILL_PRD" class="java.lang.String"/>
+	<field name="MRI_LOAD" class="java.lang.Double"/>
+	<field name="CURR_READ" class="java.lang.Double"/>
+	<field name="CURR_DATE" class="java.sql.Date"/>
+	<field name="LAST_READ" class="java.lang.Double"/>
+	<field name="LAST_DATE" class="java.sql.Date"/>
+	<field name="ADV_UNIT" class="java.lang.Double"/>
+	<field name="AVG_CONSUM" class="java.lang.Double"/>
+	<field name="ADJ_UNIT" class="java.lang.Double"/>
+	<field name="TOT_UNIT" class="java.lang.Double"/>
+	<field name="CATEGORY" class="java.lang.String"/>
+	<field name="TARIFF" class="java.lang.String"/>
+	<field name="PHASE" class="java.lang.String"/>
+	<field name="LOAD" class="java.lang.Double"/>
+	<field name="MF" class="java.lang.Double"/>
+	<field name="MTR_STAT" class="java.lang.String"/>
+	<field name="MONTH1" class="java.lang.String"/>
+	<field name="MONTH2" class="java.lang.String"/>
+	<field name="UNIT" class="java.lang.Double"/>
+	<field name="ECH" class="java.lang.Double"/>
+	<field name="MIN_FIX" class="java.lang.Double"/>
+	<field name="AECH" class="java.lang.Double"/>
+	<field name="ED" class="java.lang.Double"/>
+	<field name="MR" class="java.lang.Double"/>
+	<field name="MISC_CH" class="java.lang.Double"/>
+	<field name="ADJ_AMT" class="java.lang.Double"/>
+	<field name="FSC" class="java.lang.Double"/>
+	<field name="BILL_AMT" class="java.lang.Double"/>
+	<field name="RA" class="java.lang.Double"/>
+	<field name="AMT_PAY" class="java.lang.Double"/>
+	<field name="DUE_DATE1" class="java.sql.Date"/>
+	<field name="DUE_DATE2" class="java.sql.Date"/>
+	<field name="SC_3" class="java.lang.Double"/>
+	<field name="SC_6" class="java.lang.Double"/>
+	<field name="SC_6A" class="java.lang.Double"/>
+	<field name="ARREAR_DUE" class="java.lang.Double"/>
+	<field name="AS_ON" class="java.sql.Date"/>
+	<field name="RCPT_NO" class="java.lang.String"/>
+	<field name="RCPT_DATE" class="java.sql.Date"/>
+	<field name="RCPT_MNTH" class="java.lang.String"/>
+	<field name="RCPT_AMT" class="java.lang.Double"/>
+	<field name="REMARKS" class="java.lang.String"/>
+	<field name="cat_type" class="java.lang.String"/>
+	<field name="mri_load1" class="java.lang.String"/>
+	<field name="bmonth1" class="java.lang.String"/>
+	<field name="bmonth2" class="java.lang.String"/>
+	<field name="consum_unit" class="java.lang.Double"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="address1" class="java.lang.String"/>
+	<field name="address2" class="java.lang.String"/>
+	<field name="address3" class="java.lang.String"/>
+	<field name="address4" class="java.lang.String"/>
+	<field name="mobile" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<background>
+		<band height="802"/>
+	</background>
+	<detail>
+		<band height="762" splitType="Stretch">
+			<textField>
+				<reportElement x="488" y="97" width="65" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARTY_CODE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="488" y="108" width="65" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REFERENCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="488" y="119" width="65" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{METER_NO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="488" y="132" width="65" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CON_PRD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="488" y="143" width="65" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BILL_PRD}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="22" y="179" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CURR_READ}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="69" y="179" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CURR_DATE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="146" y="179" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LAST_READ}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="193" y="179" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LAST_DATE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="513" y="179" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOT_UNIT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="9" y="108" width="150" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="9" y="120" width="150" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{address1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="9" y="132" width="150" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{address2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="9" y="144" width="150" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{address3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="9" y="155" width="150" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{address4}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="365" y="179" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AVG_CONSUM}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="438" y="179" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ADJ_UNIT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="488" y="86" width="65" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BILL_DATE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="260" y="84" width="41" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[e-Bill]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="28" y="214" width="78" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CATEGORY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="137" y="214" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TARIFF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="214" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PHASE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="297" y="214" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="343" y="214" width="50" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MTR_STAT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMM-yy">
+				<reportElement x="4" y="257" width="41" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bmonth1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMM-yy">
+				<reportElement x="4" y="270" width="41" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bmonth2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="87" y="257" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ECH}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="87" y="270" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ECH}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="208" y="257" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AECH}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="208" y="270" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AECH}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="45" y="257" width="35" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{UNIT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="45" y="270" width="35" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{UNIT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="148" y="257" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MIN_FIX}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="148" y="270" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MIN_FIX}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="252" y="257" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FSC}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="252" y="270" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FSC}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="298" y="257" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ED}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="298" y="270" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ED}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="353" y="257" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MR}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="353" y="270" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MR}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="289" y="179" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ADV_UNIT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="4" y="317" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MISC_CH}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="64" y="317" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ADJ_AMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="4" y="330" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MISC_CH}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="64" y="330" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ADJ_AMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="160" y="317" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BILL_AMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="229" y="317" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="276" y="317" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AMT_PAY}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="333" y="317" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DUE_DATE1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="333" y="330" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DUE_DATE2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="12" y="383" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SC_3}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="12" y="396" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SC_3}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="59" y="383" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SC_6}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="59" y="396" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SC_6}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="107" y="383" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SC_6A}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="107" y="396" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SC_6A}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="200" y="383" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ARREAR_DUE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="193" y="396" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AS_ON}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="258" y="383" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RCPT_NO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="253" y="396" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RCPT_DATE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="334" y="383" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RCPT_MNTH}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="330" y="396" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RCPT_AMT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="12" y="422" width="360" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REMARKS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="249" y="214" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LOAD}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMM-yy">
+				<reportElement x="10" y="609" width="41" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bmonth2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="112" y="609" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="53" y="609" width="50" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BILL_AMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="232" y="609" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AMT_PAY}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="303" y="609" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DUE_DATE2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="387" y="609" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SC_3}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="443" y="609" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SC_6}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="516" y="609" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SC_6A}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="232" y="745" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AMT_PAY}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="112" y="745" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="303" y="745" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DUE_DATE1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="53" y="745" width="50" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BILL_AMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMM-yy">
+				<reportElement x="10" y="745" width="41" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bmonth1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="516" y="745" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SC_6A}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="387" y="745" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SC_3}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="443" y="745" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SC_6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="558" width="268" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="60" y="571" width="60" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mobile}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="571" width="268" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="558" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARTY_CODE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="695" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARTY_CODE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="60" y="708" width="60" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mobile}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="708" width="268" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="695" width="268" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="276" y="330" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AMT_PAY}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="229" y="330" width="42" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="160" y="330" width="55" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BILL_AMT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="488" y="154" width="65" height="12"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mri_load1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="15" y="538" width="129" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[e-Bill Copy]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="673" width="128" height="15"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[e-Bill Copy]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<summary>
+		<band height="802"/>
+	</summary>
+</jasperReport>
